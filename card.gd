@@ -8,7 +8,7 @@ func _selected():
 
 func _unselected():
 	selected = false
-	modulate = Color.html("000000ff")
+	modulate = Color.html("ffggffff")
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event.is_action("grab"):
