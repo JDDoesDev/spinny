@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbshmkansvvqo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_mhaft"]
+[ext_resource type="PackedScene" uid="uid://bsvk7545rswjm" path="res://card.tscn" id="2_u7avv"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mhaft")
+
+[node name="Card" parent="." instance=ExtResource("2_u7avv")]
+
+[node name="Card2" parent="." instance=ExtResource("2_u7avv")]
+position = Vector2(140, 0)
+
+[node name="Card3" parent="." instance=ExtResource("2_u7avv")]
+position = Vector2(274, 0)
+
+[node name="Card4" parent="." instance=ExtResource("2_u7avv")]
+position = Vector2(409, 0)
+
+[node name="Card5" parent="." instance=ExtResource("2_u7avv")]
+position = Vector2(552, 1)
+
+[node name="Card6" parent="." instance=ExtResource("2_u7avv")]
+position = Vector2(688, 2)

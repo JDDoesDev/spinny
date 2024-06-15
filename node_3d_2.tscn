@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvwr7bnnercfi"]
+
+[sub_resource type="FogMaterial" id="FogMaterial_6rr1a"]
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="Environment" id="Environment_5w11p"]
+volumetric_fog_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+size = Vector3(2, 3, 2)
+shape = 1
+material = SubResource("FogMaterial_6rr1a")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5w11p")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.877583, -0.229849, 0.420736, 0, 0.877583, 0.479426, -0.479426, -0.420736, 0.770151, 1.68294, 1.9177, 3.0806)

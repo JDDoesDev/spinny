@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://n7mlxqmqj64c"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_m8snc"]
+[ext_resource type="Script" path="res://MeshInstance.gd" id="2_3tdvy"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_how2l"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_axdal"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nsfso"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ao2jk"]
+radius = 8.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_csrbr"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sishd"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_how2l")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.97165, 1.39669, -1.08728)
+script = ExtResource("1_m8snc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("CapsuleShape3D_axdal")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.408375, 0)
+mesh = SubResource("CapsuleMesh_nsfso")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.8378, 0.846176, 13.5811)
+
+[node name="MeshInstance3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.0424, 0.542388, -9.31955)
+script = ExtResource("2_3tdvy")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+shape = SubResource("CylinderShape3D_ao2jk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215466, 0)
+mesh = SubResource("BoxMesh_csrbr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499802, 0)
+shape = SubResource("CylinderShape3D_sishd")
+
+[connection signal="body_entered" from="MeshInstance3D/Area3D" to="MeshInstance3D" method="_on_area_3d_body_entered"]
